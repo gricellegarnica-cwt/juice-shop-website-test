@@ -40,7 +40,6 @@ class OrderPlacementTest(unittest.TestCase):
         order_item = "egg_fruit_juice"
         HomePage.add_to_cart(driver, order_item)
         #Assert popup placed order should come up
-        time.sleep(4)
 
         #Review Basket Items
         YourBasketPage.review_basket_items(driver)
@@ -57,14 +56,15 @@ class OrderPlacementTest(unittest.TestCase):
 
         #Go to Delivery
         BasePage.element_is_visible(driver, By.XPATH, Locators.DELIVERY_BTN)
-        driver.find_element_by_xpath(Locators.DELIVERY_BTN).click
+        driver.find_element_by_xpath(Locators.DELIVERY_BTN).click()
 
         #Select Delivery Timeframe
         BasePage.element_is_visible(driver, By.ID, Locators.DELIVERY_ONE_DAY_RADIO_BTN)
-        driver.find_element_by_xpath(Locators.DELIVERY_ONE_DAY_RADIO_BTN).click
+        driver.find_element_by_id(Locators.DELIVERY_ONE_DAY_RADIO_BTN).click()
         driver.find_element_by_xpath(Locators.CONTINUE_TO_PAYMENT_BTN).click()
 
         #Credit Card Payment
+        BasePage.element_is_visible(driver, By.ID, Locators.CREDIT_CARD_RADIO_BTN_1)
         driver.find_element_by_id(Locators.CREDIT_CARD_RADIO_BTN_1).click()
         driver.find_element_by_xpath(Locators.CONTINUE_TO_REVIEW_BTN).click()
 
@@ -76,12 +76,12 @@ class OrderPlacementTest(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         time.sleep(4)
-        cls.driver.get_screenshot_as_file("order-placement-test-screenshot.png")
+        cls.driver.get_screenshot_as_file("../reports/order-placement-test-screenshot.png")
         cls.driver.quit()
         #cls.manage().deleteAllCookies()
         print ("Test Completed")
 
 
 if __name__ == "__main__":
-    unittest.main(testRunner=HtmlTestRunner.HTMLTestRunner(output='../reports'))
+    unittest.main(testRunner=HtmlTestRunner.HTMLTestRunner(output='../reports', verbosity=2, report_title='OrderPlacementTest-Report', add_timestamp=True))
 
