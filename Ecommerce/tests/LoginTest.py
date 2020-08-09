@@ -29,7 +29,7 @@ class LoginTest(unittest.TestCase):
         LoginPage.login_to_account(driver, EnvVariables.USERNAME, EnvVariables.PASSWORD)
         account_logged_in = HomePage.get_logged_in_account(driver)
         BasePage.assert_element_text(EnvVariables.USERNAME, account_logged_in)
-        print ("Login successful.")
+        print("Login successful.")
 
     def tc002_login_invalid_password(self):
         driver = self.driver

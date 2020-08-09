@@ -1,21 +1,19 @@
-import unittest
 import time
+import unittest
+    
 import HtmlTestRunner
-
+from resources.BasePage import BasePage
+from resources.HomePage import HomePage
+from resources.LoginPage import LoginPage
+from resources.YourBasketPage import YourBasketPage
+from resources.environment_variables import EnvVariables
+from resources.locators import Locators
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as ec
 
-#Hover
-from selenium.webdriver.common.action_chains import ActionChains
 
-from resources.environment_variables import EnvVariables
-from resources.locators import Locators
-from resources.BasePage import BasePage
-from resources.LoginPage import LoginPage
-from resources.HomePage import HomePage
-from resources.YourBasketPage import YourBasketPage
+# Hover
 
 class OrderPlacementTest(unittest.TestCase):
 
